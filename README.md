@@ -7,6 +7,21 @@ Now, lets check it out in action :point_right: [CognoScente](https://ho-cognosce
 > **Note**
 > The backend is currently under maintenance
 
+### Features
+- Modern, multi-page, and responsive UI built with React and Bootstrap
+- Highly available REST backend with key features including product catalog, shopping cart, and user's order history
+- Performant database queries with Mongoose
+- Integrated with Stripe API to tokenize payment information, collect and accept payments
+- JWT authentication
+
+### Technologies
+- Frontend - built with TypeScript, React, Redux
+- Backend - built with Node.js, Express.js
+- MongoDB, Mongoose
+- REST APIs
+- JWT
+- Figma
+  
 ## Previews:
 
 ### Homepage
