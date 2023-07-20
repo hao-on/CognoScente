@@ -4,6 +4,8 @@ CognoScente is a Full-Stack E-Commerce website for selling luxury fragnances.
 Feel free to fork or download this project so you could try it out and use this code as a foundation to create an even-better website :grin:.
 
 Now, lets check it out in action :point_right: [CognoScente](https://ho-cognoscente.netlify.app)
+> **Note**
+> The backend is currently under maintenance
 
 ## Previews:
 
