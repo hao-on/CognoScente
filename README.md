@@ -19,6 +19,7 @@ Now, lets check it out in action :point_right: [CognoScente](https://ho-cognosce
 - Backend - built with Node.js, Express.js
 - MongoDB, Mongoose
 - REST APIs
+- Stripe
 - JWT
 - Figma
   
