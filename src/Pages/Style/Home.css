@@ -1,9 +1,0 @@
-@media only screen and (max-width: 500px) {
-  .home-carousel {
-    height: 28vh;
-  }
-
-  .carousel .carousel-inner {
-    height: 28vh;
-  }
-}
