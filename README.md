@@ -28,13 +28,13 @@ Now, lets check it out in action :point_right: [CognoScente](https://ho-cognosce
 ### Homepage
 
 <p align="center">
-  <img src="Homepage.gif">
+  <img src="preview/Homepage.gif">
 </p>
 
 ### Fragnance Details
 
 <p align="center">
-  <img src="FragnanceDetails.gif">
+  <img src="preview/FragnanceDetails.gif">
 </p>
 
 ## Thank you
