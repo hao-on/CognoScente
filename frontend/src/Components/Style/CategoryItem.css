@@ -1,0 +1,40 @@
+.parent {
+  overflow: hidden;
+  width: 100%;
+  height: 500px;
+  border-radius: 25px;
+  position: relative;
+}
+
+.parent .child {
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  -webkit-transition: all 4s ease;
+  -moz-transition: all 4s ease;
+  -o-transition: all 4s ease;
+  -ms-transition: all 4s ease;
+  transition: all 4s ease;
+}
+
+/*hovers*/
+.parent:hover {
+  cursor: pointer;
+}
+
+.parent:hover .child {
+  opacity: 0.1;
+  transform: scale(1.5);
+}
+
+.hide {
+  visibility: hidden;
+  position: absolute;
+  left: 50%; /* horizontal alignment */
+  top: 50%; /* vertical alignment */
+  transform: translate(-50%, -50%); /* precise centering; see link below */
+}
+
+.parent:hover .hide {
+  visibility: visible;
+}

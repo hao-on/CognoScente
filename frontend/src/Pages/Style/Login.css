@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Bona+Nova&display=swap");
+
+/* background-image: url("https://images.unsplash.com/photo-1530494362568-5f68c6b8febf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"); */
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.h-custom {
+  height: calc(100% - 73px);
+  width: calc(100% - 100px);
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}

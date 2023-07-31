@@ -1,0 +1,35 @@
+.quantity-row {
+  width: 25%;
+}
+
+@media only screen and (max-width: 500px) {
+  .quantity-row {
+    width: 50%;
+  }
+}
+
+.my-carousel {
+  width: 100%;
+  height: 85.5vh;
+  background-color: beige;
+}
+
+.my-caption {
+  position: absolute;
+}
+
+.carousel-inner .carousel-item {
+  position: relative;
+  height: 85.5vh;
+}
+
+.carousel-inner .carousel-item .my-item {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
