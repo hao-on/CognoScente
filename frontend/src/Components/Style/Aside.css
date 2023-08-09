@@ -1,0 +1,39 @@
+section {
+	width: 80%;
+	margin: 0 20px;
+	line-height: 0;
+	position: relative;
+}
+section img {
+	width: 100%;
+}
+section article {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	background: white;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	grid-gap: 20px;
+	mix-blend-mode: lighten;
+}
+
+section div {
+	background: black;
+	min-height: 15vw;
+}
+
+section div:nth-child(1){
+    grid-column: 1 / 3;
+}
+
+@media only screen and (max-width: 700px) {
+	section {
+        width: 100%;
+        margin: 0;
+    }
+    section div {
+        background: black;
+        height: 50vw;
+    }
+  }

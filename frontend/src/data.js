@@ -16,6 +16,33 @@ export const categories = [
   },
 ];
 
+export const families = [
+  {
+    id: 1,
+    title: "Warm & Spicy",
+    description: 'text....',
+    link: '/'
+  },
+  {
+    id: 2,
+    title: "Earthy & Woody",
+    description: 'text....',
+    link: '/'
+  },
+  {
+    id: 3,
+    title: "Floral",
+    description: 'text....',
+    link: '/'
+  },
+  {
+    id: 4,
+    title: "Fresh",
+    description: 'text....',
+    link: '/'
+  },
+];
+
 export const banner = [
   {
     id: 1,

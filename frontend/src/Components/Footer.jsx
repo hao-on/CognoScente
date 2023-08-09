@@ -27,38 +27,35 @@ const Footer = () => {
           </h5>
         </div>
         <div className="w-100"></div>
-        <div className="col col-sm-5 mx-auto">
-          <form className="container-fluid align-self-center mt-3 w-100">
-            <div className="row align-items-center mb-3 gx-5">
-              <div className="col">
+        <div className="container-fluid">
+            <div className="row justify-content-center align-items-center py-2 mb-4">
+              <div className="col-5 col-sm-2">
                 <input
                   type="text"
-                  className="form-control border-0 rounded-0 border-bottom border-warning bg-transparent text-white"
+                  className="custom-input"
                   placeholder="First name"
                 />
               </div>
-              <div className="col">
+              <div className="col-5 col-sm-2">
                 <input
                   type="text"
-                  className="form-control border-0 rounded-0 border-bottom border-warning bg-transparent text-white"
+                  className="custom-input"
                   placeholder="Last name"
                 />
               </div>
             </div>
-            <div className="row">
-              <div className="col">
+            <div className="row justify-content-center align-items-center py-2">
+              <div className="col-10 col-sm-4">
                 <input
                   type="email"
-                  className="form-control border-0 rounded-0 border-bottom border-warning bg-transparent text-white"
+                  className="custom-input"
                   id="inputAddress"
                   placeholder="name@example.com"
                 />
               </div>
             </div>
-          </form>
         </div>
 
-        <div className="w-100"></div>
         <div className="d-grid gap-2 col-2 mx-auto my-5 align-self-center justify-content-center ">
           <button type="button" className="btn btn-outline-warning ">
             Submit
@@ -126,7 +123,7 @@ const Footer = () => {
         <div className="col-12 col-sm-12 d-flex flex-row justify-content-center align-items-center py-4">
           <Copyright sx={{ fontSize: 16 }} />
           <Typography variant="body2">
-            2022 CognoScente. All Right Reserved.
+            2023 CognoScente. All Right Reserved.
           </Typography>
         </div>
       </div>

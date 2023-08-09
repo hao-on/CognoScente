@@ -13,7 +13,7 @@ function NavBar() {
 
   const [color, setColor] = useState(false);
   const changeColor = () => {
-    if (window.scrollY >= 90) {
+    if (window.scrollY >= 150) {
       setColor(true);
     } else {
       setColor(false);
@@ -37,8 +37,8 @@ function NavBar() {
     <div
       className={
         color || pages.includes(page)
-          ? "bg-black py-3 fixed-top text-white text-center"
-          : "bg-transparent py-3 fixed-top text-white text-center"
+          ? "bg-black py-2 fixed-top"
+          : "navbar-bg py-2 fixed-top"
       }
       style={
         color || pages.includes(page)
@@ -47,7 +47,7 @@ function NavBar() {
       }
     >
       <div className="container-fluid">
-        <div className="row justify-content-center justify-content-sm-center ">
+        <div className="row justify-content-between align-items-center px-2">
           {/* <div className="col col-sm-5 d-flex header__logo align-self-center navbar navbar-dark">
             <button
               className="navbar-toggler border-0 custom-toggler"
@@ -95,10 +95,11 @@ function NavBar() {
               </div>
             </div>
           </div> */}
-
-          <div className="col col-sm-2 d-block align-self-center">
+          <div className="col-1"></div>
+          <div className="col-10 d-flex justify-content-evenly align-items-center text-center">
             <Link
               to={"/"}
+              className="navbar-sub-header"
               onClick={() => {
                 window.scroll({
                   top: 0,
@@ -106,20 +107,66 @@ function NavBar() {
                   behavior: "smooth",
                 });
               }}
-              style={{
-                textDecoration: "none",
-                color: "white",
-                fontWeight: "500",
-                fontFamily: `"Italiana", serif`,
-                fontSize: "20pt",
+            >
+              home
+            </Link>
+            <Link
+              to={"/"}
+              className="navbar-sub-header"
+              onClick={() => {
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: "smooth",
+                });
               }}
             >
-              <h2 className="navbar-brand">.cognoscente</h2>
+              men
             </Link>
+            <Link
+              to={"/"}
+              className="navbar-header"
+              onClick={() => {
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              .cognoscente
+            </Link>
+            <Link
+              to={"/"}
+              className="navbar-sub-header"
+              onClick={() => {
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              women
+            </Link>
+            <Link
+              to={"/"}
+              className="navbar-sub-header"
+              
+              onClick={() => {
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              unisex
+            </Link>
+
           </div>
 
-          <div className="col col-sm-5 d-flex justify-content-end mt-2">
-            <ul className="my-nav">
+          <div className="col-1 d-flex justify-content-around align-items-center">
               <Link
                 to={"/login"}
                 onClick={() => {
@@ -132,11 +179,11 @@ function NavBar() {
                 style={{
                   textDecoration: "none",
                   color: "white",
-                  paddingRight: "10px",
+                  padding: "0px 10px",
                   marginTop: "2px",
                 }}
               >
-                <PersonOutlineOutlinedIcon fontSize="small" />
+                <PersonOutlineOutlinedIcon fontSize="medium" />
               </Link>
               <Link
                 to={"/cart"}
@@ -158,10 +205,9 @@ function NavBar() {
                   showZero
                   sx={badgeStyle}
                 >
-                  <ShoppingBagOutlinedIcon fontSize="small" />
+                  <ShoppingBagOutlinedIcon fontSize="medium" />
                 </Badge>
               </Link>
-            </ul>
           </div>
         </div>
       </div>

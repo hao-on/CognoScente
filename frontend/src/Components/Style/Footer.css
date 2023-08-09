@@ -131,3 +131,21 @@
 .footer-nav-custom li a:hover {
   color: #ffc107;
 }
+
+.custom-input {
+  background-color: black;
+  padding: 5px 10px;
+  border: none;
+  width: 100%;
+  border-bottom: 1px solid #ffc107;
+  color: white;
+}
+
+.custom-input:focus{
+  outline: none;
+}
+
+.custom-input::placeholder { /* Chrome/Opera/Safari */
+  color: white;
+  opacity: 0.8;
+}

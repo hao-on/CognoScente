@@ -1,0 +1,152 @@
+.categoryGrid {
+    position: relative;
+    overflow: hidden;
+    height: 50vw;
+    background: #fff;
+    background-color: black
+}
+  
+.categoryGrid .container {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    transform: rotateZ(45deg);
+    top: -20vw;
+    left: -8vw;
+    height: 100vw;
+	width: 100vw;
+}
+  
+.categoryGrid .container .column {
+    overflow: hidden;
+    position: relative;
+}
+  
+.categoryGrid .container .column:nth-of-type(1) {
+      width: 50%;
+      height: 100vw;
+      border-right: 8px solid white;
+  }
+  
+.categoryGrid .container .column:nth-of-type(1):hover {
+      opacity: 0.75;
+      cursor: pointer;
+  }
+  
+.categoryGrid .container .column:nth-of-type(1):before {
+      position: absolute;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transform: rotateZ(-45deg);
+      content: "";
+      width: 50vw;
+      height: 40vw;
+      top: 50vw;
+      left: -10vw;
+      background-image: url(https://res.cloudinary.com/dajhxqlxa/image/upload/v1691540506/1837845_zcr7sq.jpg);
+  }
+  
+
+  .categoryGrid .container .column:nth-of-type(2) {
+	display: flex;
+	flex-direction: column-reverse;
+	width: 100%;
+	height: 120vw;
+}
+
+.categoryGrid .container .column:nth-of-type(2) .row {
+	border-top: 8px solid #fff;
+}
+
+  
+  
+.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(1) {
+      position: relative;
+      overflow: hidden;
+      height: 90vw;
+  }
+  
+.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(1):hover {
+      opacity: 0.75;
+      cursor: pointer;
+  }
+  
+.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(1):before {
+      position: absolute;
+      background-repeat: no-repeat;
+      background-size: 30%;
+      transform: rotateZ(-45deg);
+      content: "";
+      top: -25vw;
+      left: -4vw;
+      width: 100vw;
+      height: 40vw;
+      background-image: url(https://res.cloudinary.com/dajhxqlxa/image/upload/v1691607193/1200px-White_circle_on_black_background.svg_odyo4j.png);
+  }
+  
+  .categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) {
+	display: flex;
+	height: 80vw;
+}
+
+
+.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) {
+    display: flex;
+    position: relative;
+	overflow: hidden;
+	width: 30%;
+	background-color: white;
+}
+
+.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) .text {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	transform: rotateZ(-90deg);
+	position: relative;
+}
+
+.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) h6 {
+    transform: rotateZ(-90deg);
+    align-self: center;
+    margin-left: 30px;
+    margin-top: 35vw;
+    font-size: 20pt;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) .text p {
+	text-align: right;
+	position: absolute;
+	color: red;
+	font-size: 0.9vw;
+	width: 18vw;
+    top: 100vw;
+	left: -3.5vw;
+}
+
+.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(2) {
+	position: relative;
+	width: 70%;
+	border-left: 8px solid white;
+	overflow: hidden;
+}
+
+.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(2):hover {
+	opacity: 0.75;
+	cursor: pointer;
+}
+
+.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(2):before {
+	position: absolute;
+	top: 0;
+	left: 0vw;
+	width: 100%;
+    height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	transform: rotateZ(-45deg);
+	content: "";
+	background-image: url(https://res.cloudinary.com/dajhxqlxa/image/upload/v1691540506/desktop-wallpaper-lady-by-ben-seys-women-silhouette-black-and-white-thumbnail_xwsp4e.jpg);
+}
