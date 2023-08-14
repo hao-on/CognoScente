@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Style/NavBar.css";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { Badge, makeStyles } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { navItems } from "../data";
+import MenuIcon from '@mui/icons-material/Menu';
 
 function NavBar() {
   const location = useLocation();
@@ -12,6 +14,8 @@ function NavBar() {
   const pages = ["cart", "login", "register"];
 
   const [color, setColor] = useState(false);
+  const [toggle, setToggle] = useState(false);
+
   const changeColor = () => {
     if (window.scrollY >= 150) {
       setColor(true);
@@ -20,7 +24,17 @@ function NavBar() {
     }
   };
 
+  const showToggle = () => {
+    if(window.innerWidth <= 1000){
+      setToggle(true)
+    }
+    else{
+      setToggle(false)
+    }
+  }
+
   window.addEventListener("scroll", changeColor);
+  window.addEventListener("resize", showToggle);
 
   const badgeStyle = {
     "& .MuiBadge-badge": {
@@ -41,64 +55,45 @@ function NavBar() {
           : "navbar-bg py-2 fixed-top"
       }
       style={
-        color || pages.includes(page)
+        color || page !== 'product'
           ? { mixBlendMode: "normal" }
           : { mixBlendMode: "difference" }
       }
     >
-      <div className="container-fluid">
-        <div className="row justify-content-between align-items-center px-2">
-          {/* <div className="col col-sm-5 d-flex header__logo align-self-center navbar navbar-dark">
-            <button
-              className="navbar-toggler border-0 custom-toggler"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasDark"
-              aria-controls="offcanvasDark"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div
-              className="offcanvas offcanvas-start bg-black text-white "
-              data-bs-scroll="true"
-              tabIndex="-1"
-              id="offcanvasDark"
-              aria-labelledby="offcanvasWithDarkLabel"
-            >
-              <div className="offcanvas-header">
-                <h5 className="offcanvas-title" id="offcanvasDarkLabel"></h5>
-                <button
-                  type="button"
-                  className="btn-close btn-close-white"
-                  data-bs-dismiss="offcanvas"
-                  aria-label="Close"
-                ></button>
+      <div className="container">
+        <div className="row justify-content-between align-items-center">
+          <div className="col-3 col-md-1">
+            <button class="btn m-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft" hidden={!toggle}><MenuIcon sx={{ color: "white" }} /></button>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+              <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Menu</h5>
+                <button type="button" class="btn-close btn-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
-              <div className="offcanvas-body">
-                <ul>
-                  <li>
-                    <a href="/">home</a>
-                  </li>
-                  <li>
-                    <a href="/">men's fragnace</a>
-                  </li>
-                  <li>
-                    <a href="/">women's fragnance</a>
-                  </li>
-                  <li>
-                    <a href="/">unisex's fragnance</a>
-                  </li>
-                  <li>
-                    <a href="/">.cognoscente's world</a>
-                  </li>
-                </ul>
+              <div class="offcanvas-body">
+                {navItems.map((item) => (
+                  <p id={item.id}>
+                    <Link
+                    to={`${item.page}`}
+                    className="toggle-link"
+                    onClick={() => {
+                      window.scroll({
+                        top: 0,
+                        left: 0,
+                        behavior: "smooth",
+                      });
+                    }}
+                    >
+                      { item.title }
+                    </Link>
+                  </p>
+                ))}
+                
               </div>
             </div>
-          </div> */}
-          <div className="col-1"></div>
-          <div className="col-10 d-flex justify-content-evenly align-items-center text-center">
+          </div>
+          <div className="col-6 col-md-10 d-flex justify-content-evenly align-items-center text-center">
             <Link
-              to={"/"}
+              to={"/products"}
               className="navbar-sub-header"
               onClick={() => {
                 window.scroll({
@@ -107,11 +102,12 @@ function NavBar() {
                   behavior: "smooth",
                 });
               }}
+              hidden={toggle}
             >
-              home
+              products
             </Link>
             <Link
-              to={"/"}
+              to={`/products/men`}
               className="navbar-sub-header"
               onClick={() => {
                 window.scroll({
@@ -120,6 +116,7 @@ function NavBar() {
                   behavior: "smooth",
                 });
               }}
+              hidden={toggle}
             >
               men
             </Link>
@@ -137,7 +134,7 @@ function NavBar() {
               .cognoscente
             </Link>
             <Link
-              to={"/"}
+              to={`/products/women`}
               className="navbar-sub-header"
               onClick={() => {
                 window.scroll({
@@ -146,13 +143,13 @@ function NavBar() {
                   behavior: "smooth",
                 });
               }}
+              hidden={toggle}
             >
               women
             </Link>
             <Link
-              to={"/"}
+              to={`/products/unisex`}
               className="navbar-sub-header"
-              
               onClick={() => {
                 window.scroll({
                   top: 0,
@@ -160,13 +157,16 @@ function NavBar() {
                   behavior: "smooth",
                 });
               }}
+              hidden={toggle}
             >
               unisex
             </Link>
 
           </div>
 
-          <div className="col-1 d-flex justify-content-around align-items-center">
+          <div className="col-3 col-md-1">
+            <div className="row align-items-center">
+              <div className="col-6">
               <Link
                 to={"/login"}
                 onClick={() => {
@@ -185,6 +185,8 @@ function NavBar() {
               >
                 <PersonOutlineOutlinedIcon fontSize="medium" />
               </Link>
+              </div>
+              <div className="col-6">
               <Link
                 to={"/cart"}
                 onClick={() => {
@@ -208,6 +210,9 @@ function NavBar() {
                   <ShoppingBagOutlinedIcon fontSize="medium" />
                 </Badge>
               </Link>
+              </div>
+
+              </div>
           </div>
         </div>
       </div>

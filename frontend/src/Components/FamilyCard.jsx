@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Style/FamilyCard.css'
 
 const FamilyCard = ({ item }) => {
@@ -6,10 +7,19 @@ const FamilyCard = ({ item }) => {
             <div class="card-body">
                 <h5 class="card-title">{item.title}</h5>
                 <p class="card-text">{item.description}</p>
-                <div className=" text-end">
-                    <a href={item.page} className="text-black">Shop now</a>
-                </div>
-
+                <Link
+                    to={item.page}
+                    className="text-end text-black"
+                    onClick={() => {
+                        window.scroll({
+                        top: 0,
+                        left: 0,
+                        behavior: "smooth",
+                        });
+                    }}
+                >
+                    Shop now
+                </Link>
             </div>
         </div>
     )

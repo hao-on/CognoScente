@@ -21,6 +21,13 @@
   font-size: large;
 }
 
+.toggle-link{
+  text-decoration: none;
+  text-transform: capitalize;
+  color: black;
+  font-size: large;
+}
+
 
 .header {
   display: flex;

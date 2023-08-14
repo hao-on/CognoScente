@@ -6,34 +6,39 @@ const pickRandom = (products) => {
   var shuffled = products.sort(function () {
     return 0.5 - Math.random();
   });
-  var selected = shuffled.slice(0, 3);
+  var selected = shuffled.slice(0, 4);
   return selected;
 };
 
-const Products = ({ category, sort }) => {
+const Products = ({ category, family, sort, isRandom }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
+    let query = '/products'
+
+    if(category && family){
+      query += `?category=${category}&family=${family}`
+    }
+    else if(category){
+      query += `?category=${category}`
+    }
+    else if(family){
+      query += `?family=${family}`
+    }
+
     const getProducts = async () => {
       try {
-        const res = await axiosInstance.get(
-          category
-            ? `/products?category=${
-                category.charAt(0).toUpperCase() + category.slice(1)
-              }`
-            : "/products"
-        );
-        console.log(res.data)
-        setProducts(res.data);
+        const res = await axiosInstance.get(query)
+        setProducts(res.data)
       } catch (err) {}
     };
     getProducts();
-  }, [category]);
+  }, [category, family]);
 
   useEffect(() => {
-    category && setFilteredProducts(products);
-  }, [products, category]);
+    setFilteredProducts(products);
+  }, [products]);
 
   useEffect(() => {
     if (sort === "newest") {
@@ -51,25 +56,18 @@ const Products = ({ category, sort }) => {
     }
   }, [sort]);
 
-  // var shuffled = products.sort(function () {
-  //   return 0.5 - Math.random();
-  // });
-  // var selected = shuffled.slice(0, 3);
-  // console.log(selected);
-
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row gx-5 gy-2">
-        {category
+        {!isRandom
           ? filteredProducts.map((item) => (
-              <div className="col-sm-4">
+              <div className="col-12 col-sm-6 col-md-4 col-xl-3">
                 <Product item={item} key={item.id} />
               </div>
             ))
           : pickRandom(products)
-              .slice(0, 3)
               .map((item) => (
-                <div className="col-sm-4">
+                <div className="col-12 col-sm-6 col-md-4 col-xl-3">
                   <Product item={item} key={item.id} />
                 </div>
               ))}

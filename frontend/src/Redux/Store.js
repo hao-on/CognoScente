@@ -21,6 +21,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({ user: userReducer, cart: cartReducer });
 
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
@@ -34,3 +35,13 @@ export const store = configureStore({
 });
 
 export let persistor = persistStore(store);
+
+export const resetStore = async () => {
+  await persistor.purge()
+    .then(() => {
+      return persistor.flush()
+    })
+    .then(() => {
+      persistor.pause()
+    })
+}

@@ -1,7 +1,7 @@
 .categoryGrid {
     position: relative;
     overflow: hidden;
-    height: 50vw;
+    height: 40vw;
     background: #fff;
     background-color: black
 }
@@ -57,8 +57,6 @@
 .categoryGrid .container .column:nth-of-type(2) .row {
 	border-top: 8px solid #fff;
 }
-
-  
   
 .categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(1) {
       position: relative;
@@ -74,11 +72,11 @@
 .categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(1):before {
       position: absolute;
       background-repeat: no-repeat;
-      background-size: 30%;
+      background-size: 25%;
       transform: rotateZ(-45deg);
       content: "";
-      top: -25vw;
-      left: -4vw;
+      top: -29vw;
+      left: -5vw;
       width: 100vw;
       height: 40vw;
       background-image: url(https://res.cloudinary.com/dajhxqlxa/image/upload/v1691607193/1200px-White_circle_on_black_background.svg_odyo4j.png);
@@ -109,7 +107,7 @@
 .categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) h6 {
     transform: rotateZ(-90deg);
     align-self: center;
-    margin-left: 30px;
+    margin-left: 65px;
     margin-top: 35vw;
     font-size: 20pt;
     font-style: italic;
@@ -150,3 +148,21 @@
 	content: "";
 	background-image: url(https://res.cloudinary.com/dajhxqlxa/image/upload/v1691540506/desktop-wallpaper-lady-by-ben-seys-women-silhouette-black-and-white-thumbnail_xwsp4e.jpg);
 }
+
+
+@media only screen and (max-width: 600px) {
+    .categoryGrid {
+        height: 50vw;
+    }
+
+    .categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(1):before {
+        top: -24vw;
+        left: 1vw;   
+    }
+
+    .categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) h6 {
+        margin-left: 5px;
+        margin-top: 35vw;
+        font-size: 12pt;
+    }
+  }

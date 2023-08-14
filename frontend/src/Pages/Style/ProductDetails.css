@@ -10,21 +10,20 @@
 
 .my-carousel {
   width: 100%;
-  height: 85.5vh;
-  background-color: beige;
+  height: 100%;
 }
 
-.my-caption {
-  position: absolute;
+.my-carousel .carousel-inner{
+  height:100%;
+}
+.my-carousel .carousel-inner .carousel-item {
+    position: relative;
+    height:100%;
 }
 
-.carousel-inner .carousel-item {
-  position: relative;
-  height: 85.5vh;
-}
-
-.carousel-inner .carousel-item .my-item {
-  position: absolute;
+.my-carousel .carousel-inner .carousel-item .my-item {
+  position: absolute;   
+  top: 50%;
   top: 50%;
   left: 0;
   right: 0;
@@ -32,4 +31,20 @@
   -moz-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.custom-divider {
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  color: grey;
+  margin: 50px 5px;
+}
+
+.custom-divider::before, .custom-divider::after {
+  flex: 1;
+  content: '';
+  padding: 1px;
+  background-color: #C5C5C5;
+  margin: 10px;
 }

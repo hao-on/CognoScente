@@ -3,14 +3,14 @@ import "./Style/Carousel.css";
 
 function Carousel() {
   return (
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel custom-carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
       <div className="carousel-inner">
-        <div className="carousel-item active">
+        <div className="carousel-item">
           <img
             src="https://res.cloudinary.com/dajhxqlxa/image/upload/v1691610546/laura-chouette-i15o-H_C5UE-unsplash_kluhsp.jpg"
             alt="..."
@@ -22,7 +22,7 @@ function Carousel() {
             alt="..."
           />
         </div>
-        <div className="carousel-item">
+        <div className="carousel-item  active">
           <img
             src="https://res.cloudinary.com/dajhxqlxa/image/upload/v1691610547/laura-chouette-egaUoIaUx_I-unsplash_cpvcww.jpg"
             alt="..."

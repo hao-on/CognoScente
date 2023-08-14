@@ -6,7 +6,7 @@ function Aside() {
       <div className="container-fluid p-5">
         <div className="row align-items-center">
           <div className="col-12 col-md-4">
-            <section>
+            <section className="aside-section">
               <img src="https://images.unsplash.com/photo-1633588565899-513cbea146cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1036&q=80" alt=""/>
               <article>
                 <div></div>

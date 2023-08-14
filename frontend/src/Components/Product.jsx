@@ -2,7 +2,7 @@ import "./Style/Product.css";
 import { Link } from "react-router-dom";
 const Product = ({ item }) => {
   return (
-    <div className="card p-3 border-0 bg-transparent card-custom">
+    <div className="card border-0 bg-transparent card-custom">
       <Link
         to={`/product/${item._id}`}
         onClick={() => {
@@ -17,7 +17,7 @@ const Product = ({ item }) => {
           className="d-flex align-items-center justify-content-center mb-3"
           style={{
             width: "100%",
-            height: "500px",
+            height: "350px",
             color: "white",
             backgroundSize: "cover",
             backgroundPosition: "center center",

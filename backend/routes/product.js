@@ -57,20 +57,44 @@ router.get("/find/:id", async (req, res) => {
 router.get("/", async (req, res) => {
   const qNew = req.query.new;
   const qCategory = req.query.category;
+  const qFamily = req.query.family;
 
   try {
     let products;
     if (qNew) {
       products = await Product.find().sort({ _id: -1 }).limit(1);
-    } else if (qCategory) {
-      products = await Product.find({
-        categories: {
-          $in: [qCategory],
-        },
-      });
-    } else {
+    } 
+    else if (qCategory || qFamily) {
+      if(qCategory && !qFamily){
+        products = await Product.find({
+          categories: {
+            $elemMatch: { $regex: new RegExp(qCategory.split(',').map((category) => "^" + category).join('|') + "$", 'i') }
+          },
+        });
+      }
+      else if(!qCategory && qFamily){
+        products = await Product.find({
+          family: {
+            $regex: new RegExp(qFamily.split(',').map((category) => "^" + category + ".*").join('|') + "$", 'i')
+          },
+        });
+      }
+      else{
+        products = await Product.find({
+          categories: {
+            $elemMatch: { $regex: new RegExp(qCategory.split(',').map((category) => "^" + category).join('|') + "$", 'i') }
+          },
+          family: {
+            $regex: new RegExp(qFamily.split(',').map((category) => "^" + category + ".*").join('|') + "$", 'i')
+          },
+        });
+      }
+    }  
+    
+    else {
       products = await Product.find();
     }
+
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json(err);

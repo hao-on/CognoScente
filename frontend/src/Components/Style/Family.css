@@ -23,9 +23,20 @@
 	height: 220px; 
 }
 
-.svg-container h1 {
+.svg-container div {
 	font-size: 40pt;
 	font-weight: lighter;
 	transform: rotate(-45deg);
 	z-index: 0;
 }
+
+@media only screen and (max-width: 600px) {
+	.svg-container div {
+		font-size: 30pt;
+	}
+
+	.svg-container svg {
+		width: 200px; 
+		height: 200px; 
+	}
+  }

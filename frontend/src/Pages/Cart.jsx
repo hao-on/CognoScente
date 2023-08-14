@@ -2,47 +2,80 @@ import Footer from "../Components/Footer";
 import NavBar from "../Components/NavBar";
 import "./Style/Cart.css";
 import CartItem from "./CartItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { userRequest } from "../requestMethods";
-import { useNavigate } from "react-router-dom";
-import StripeCheckout from "react-stripe-checkout";
-const KEY = process.env.REACT_APP_STRIPE;
+import { Link } from "react-router-dom";
+import { axiosInstance } from "../config";
+import { resetStore } from "../Redux/Store";
+
+
+const Message = ({ message }) => (
+  <section className="py-5" style={{height: "50vh"}}>
+      <div className="container h-100 w-50 d-flex text-center align-items-center">
+          <h5 className="mx-auto">
+              <strong>{message} </strong>
+              <Link
+                  to="/"
+                  onClick={() => {
+                    window.scroll({
+                      top: 0,
+                      left: 0,
+                      behavior: "smooth",
+                    });
+                  }}
+                >
+                Go to HomePage
+              </Link>
+          </h5>
+          
+      </div>
+  </section>
+);
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  const taxTotal = parseFloat(cart.total * 1.0775);
-  const shippingCost = 10;
-  const total = taxTotal + shippingCost;
-  const [stripeToken, setStripeToken] = useState(null);
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const [message, setMessage] = useState("");
 
-  const onToken = (token) => {
-    setStripeToken(token);
-  };
+  const handleCheckout = async () => {
+    // move to stripe checkoutpage
+    try {
+      const { data } = await axiosInstance.post(
+        `/checkout/payment`,
+        {
+          items: cart.products
+        }
+      );
+
+      window.location.href = data.url;
+    } catch (error) {
+      console.log(error.response);
+    }
+  }
 
   useEffect(() => {
-    const makeRequest = async () => {
-      try {
-        const res = await userRequest.post("/checkout/payment", {
-          tokenId: stripeToken.id,
-          amount: cart.total * 100,
-        });
-        navigate("/success", {
-          state: {
-            stripeData: res.data,
-            products: cart,
-          },
-        });
-      } catch {}
-    };
-    stripeToken && makeRequest();
-  }, [stripeToken, cart.total, navigate, cart]);
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("success")) {
+      setMessage("Order placed! You will receive an email confirmation.");
+      // dispatch(resetCart({type: "DESTROY"}))
+      resetStore()
+    }
+
+    if (query.get("canceled")) {
+      setMessage(
+        "Order canceled -- continue to shop around and checkout when you're ready."
+      );
+    }
+  }, []);
+
 
   return (
     <div>
       <NavBar />
-      <section className="h-100 py-5">
+      { message ? (
+        <Message message={message} />
+      ) : (
+        <section className="h-100 py-5">
         <div className="container py-5">
           <h2 className="mx-3">
             <strong>Shopping Bag</strong>
@@ -50,8 +83,7 @@ const Cart = () => {
 
           <div className="row d-flex justify-content-center my-4">
             <div className="col-md-8">
-              <div className="card mb-4">
-                <div className="mt-4" />
+              <div className="card mb-4 border-0">
                 {cart.quantity === 0 ? (
                   <h5 className="m-auto"> your bag is empty </h5>
                 ) : (
@@ -63,15 +95,13 @@ const Cart = () => {
                     />
                   ))
                 )}
-
-                <div className="mb-5" />
               </div>
             </div>
 
             {/* --- Summary ---*/}
             <div className="col-md-4">
-              <div className="card mb-4">
-                <div className="card-body gradient-custom">
+              <div className="card mb-4 border-black">
+                <div className="card-body">
                   <ul className="list-group list-group-flush mt-2 list-group-mine">
                     <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-2">
                       Total items
@@ -83,58 +113,28 @@ const Cart = () => {
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-2">
                       Shipping
-                      <span>$10.00</span>
+                      <span>$0.00</span>
                     </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center border-bottom border-light px-0 pb-4">
+                    {/* <li className="list-group-item d-flex justify-content-between align-items-center border-bottom border-light px-0 pb-4">
                       Tax Total
                       <span>${taxTotal.toFixed(2)}</span>
-                    </li>
+                    </li> */}
                     <li className="list-group-item d-flex justify-content-between align-items-center border-bottom border-light px-0 py-4 mb-0">
                       <strong>Estimated Total</strong>
                       <span>
-                        <strong>${total.toFixed(2)}</strong>
+                        <strong>${cart.total.toFixed(2)}</strong>
                       </span>
                     </li>
                   </ul>
-                  <div className="border-bottom border-light mb-4">
-                    <div className="d-flex  justify-content-between px-0 py-4 ">
-                      <div className="form-floating flex-fill">
-                        <input
-                          type="text"
-                          className="form-control bg-transparent text-white"
-                          id="floatingInput"
-                          placeholder="ac12cd34"
-                        />
-                        <label for="floatingInput" style={{ color: "white" }}>
-                          Promote Code
-                        </label>
-                      </div>
-                      <button
-                        type="button"
-                        className="btn btn-outline-light btn-me ms-3 py-0"
-                      >
-                        APPLY
-                      </button>
-                    </div>
-                  </div>
                   <div className="d-grid mb-2">
-                    <StripeCheckout
-                      name=".cognoscente"
-                      image="https://images.unsplash.com/photo-1633588565899-513cbea146cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1036&q=80"
-                      billingAddress
-                      shippingAddress
-                      description={`Your total is $${cart.total}`}
-                      amount={cart.total * 100}
-                      token={onToken}
-                      stripeKey={KEY}
-                    >
                       <button
                         type="button"
-                        className="btn btn-outline-warning w-100"
+                        className="btn btn-outline-dark fw-bold w-100"
+                        onClick={handleCheckout}
+                        disabled={cart.quantity === 0}
                       >
-                        SECURE CHECKOUT
+                        CHECKOUT
                       </button>
-                    </StripeCheckout>
                   </div>
                 </div>
               </div>
@@ -142,104 +142,9 @@ const Cart = () => {
           </div>
         </div>
       </section>
+      )}
       <Footer />
     </div>
   );
 };
-
-// const Cart = () => {
-//   return (
-//     <Container>
-//       <NavBar />
-//       <Wrapper>
-//         <Title>YOUR BAG</Title>
-//         <Top>
-//           <TopButton>CONTINUE SHOPPING</TopButton>
-//           <TopTexts>
-//             <TopText>Shopping Bag(2)</TopText>
-//             <TopText>Your Wishlist (0)</TopText>
-//           </TopTexts>
-//           <TopButton type="filled">CHECKOUT NOW</TopButton>
-//         </Top>
-//         <Bottom>
-//           <Info>
-// <Product>
-//   <ProductDetail>
-//     <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
-//     <Details>
-//       <ProductName>
-//         <b>Product:</b> JESSIE THUNDER SHOES
-//       </ProductName>
-//       <ProductId>
-//         <b>ID:</b> 93813718293
-//       </ProductId>
-//       <ProductColor color="black" />
-//       <ProductSize>
-//         <b>Size:</b> 37.5
-//       </ProductSize>
-//     </Details>
-//   </ProductDetail>
-//   <PriceDetail>
-//     <ProductAmountContainer>
-//       <Add />
-//       <ProductAmount>2</ProductAmount>
-//       <Remove />
-//     </ProductAmountContainer>
-//     <ProductPrice>$ 30</ProductPrice>
-//   </PriceDetail>
-// </Product>
-//             <Hr />
-//             <Product>
-//               <ProductDetail>
-//                 <Image src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png" />
-//                 <Details>
-//                   <ProductName>
-//                     <b>Product:</b> HAKURA T-SHIRT
-//                   </ProductName>
-//                   <ProductId>
-//                     <b>ID:</b> 93813718293
-//                   </ProductId>
-//                   <ProductColor color="gray" />
-//                   <ProductSize>
-//                     <b>Size:</b> M
-//                   </ProductSize>
-//                 </Details>
-//               </ProductDetail>
-//               <PriceDetail>
-//                 <ProductAmountContainer>
-//                   <Add />
-//                   <ProductAmount>1</ProductAmount>
-//                   <Remove />
-//                 </ProductAmountContainer>
-//                 <ProductPrice>$ 20</ProductPrice>
-//               </PriceDetail>
-//             </Product>
-//           </Info>
-//           <Summary>
-//             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-//             <SummaryItem>
-//               <SummaryItemText>Subtotal</SummaryItemText>
-//               <SummaryItemPrice>$ 80</SummaryItemPrice>
-//             </SummaryItem>
-//             <SummaryItem>
-//               <SummaryItemText>Estimated Shipping</SummaryItemText>
-//               <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-//             </SummaryItem>
-//             <SummaryItem>
-//               <SummaryItemText>Shipping Discount</SummaryItemText>
-//               <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-//             </SummaryItem>
-//             <SummaryItem type="total">
-//               <SummaryItemText>Total</SummaryItemText>
-//               <SummaryItemPrice>$ 80</SummaryItemPrice>
-//             </SummaryItem>
-//             <Button>CHECKOUT NOW</Button>
-//           </Summary>
-//         </Bottom>
-//       </Wrapper>
-//       <Footer />
-//     </Container>
-//   );
-// };
-
 export default Cart;

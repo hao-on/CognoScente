@@ -21,43 +21,83 @@ export const families = [
     id: 1,
     title: "Warm & Spicy",
     description: 'text....',
-    link: '/'
+    page: '/products/warm'
   },
   {
     id: 2,
     title: "Earthy & Woody",
     description: 'text....',
-    link: '/'
+    page: '/products/earthy'
   },
   {
     id: 3,
     title: "Floral",
     description: 'text....',
-    link: '/'
+    page: '/products/floral'
   },
   {
     id: 4,
     title: "Fresh",
     description: 'text....',
-    link: '/'
+    page: '/products/fresh'
   },
 ];
 
-export const banner = [
+export const navItems = [
   {
     id: 1,
-    // img: "https://images.unsplash.com/photo-1523391571866-235461b18fae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-    img: "https://images.unsplash.com/photo-1504717955550-7a8803776aaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
-    title: "MEN",
+    title: "products",
+    page: '/products'
   },
   {
     id: 2,
-    img: "https://images.unsplash.com/photo-1535264554795-8003cf51bd67?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    title: "men",
+    page: '/products/men'
+  },
+  {
+    id: 3,
+    title: "women",
+    page: '/products/women'
+  },
+  {
+    id: 4,
+    title: "unisex",
+    page: '/products/unisex'
+  },
+
+];
+
+export const banner = [
+
+  {
+    id: 2,
+    img: "https://images.unsplash.com/photo-1504717955550-7a8803776aaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
     title: "WOMEN",
   },
   {
     id: 3,
-    img: "https://images.unsplash.com/photo-1493810353548-4cdea49dea74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    img: "https://images.unsplash.com/photo-1504717955550-7a8803776aaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
     title: "UNISEX",
   },
+  {
+    id: 4,
+    img: "https://images.unsplash.com/photo-1504717955550-7a8803776aaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+    title: "WARM & SPICY",
+  },
+  {
+    id: 5,
+    img: "https://images.unsplash.com/photo-1504717955550-7a8803776aaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+    title: "EARTHY & WOODY",
+  },
+  {
+    id: 6,
+    img: "https://images.unsplash.com/photo-1504717955550-7a8803776aaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+    title: "FLORAL",
+  },
+  {
+    id: 7,
+    img: "https://images.unsplash.com/photo-1504717955550-7a8803776aaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+    title: "FRESH",
+  },
+
 ];
