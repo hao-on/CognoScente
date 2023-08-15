@@ -30,13 +30,19 @@ Now, lets check it out in action :point_right: [CognoScente](https://ho-cognosce
 ### Homepage
 
 <p align="center">
-  <img src="Homepage.gif">
+  <img src="HomePage.gif">
 </p>
 
-### Fragnance Details
+### Products Page
 
 <p align="center">
-  <img src="FragnanceDetails.gif">
+  <img src="Products.gif">
+</p>
+
+### Product Details, Cart, and Stripe CheckOut
+
+<p align="center">
+  <img src="Detail.gif">
 </p>
 
 ## Thank you
