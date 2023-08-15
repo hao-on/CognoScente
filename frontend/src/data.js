@@ -20,25 +20,25 @@ export const families = [
   {
     id: 1,
     title: "Warm & Spicy",
-    description: 'text....',
+    description: 'spicy fragrances are, frankly, sultry. Ideal for someone who want to feel mysterious.',
     page: '/products/warm'
   },
   {
     id: 2,
     title: "Earthy & Woody",
-    description: 'text....',
+    description: 'reminiscent of a walk among the California redwoods or sitting around a campfire',
     page: '/products/earthy'
   },
   {
     id: 3,
     title: "Floral",
-    description: 'text....',
+    description: `floral fragrances are unapologetically romantic, flirty and feminine`,
     page: '/products/floral'
   },
   {
     id: 4,
     title: "Fresh",
-    description: 'text....',
+    description: `uplifting, zesty, cooling. They feature a whoosh of notes like lemon, bergamot, orange, grapefruit, mandarin`,
     page: '/products/fresh'
   },
 ];

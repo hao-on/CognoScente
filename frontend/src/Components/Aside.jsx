@@ -20,11 +20,7 @@ function Aside() {
                 <p
                   className="aside-text"
                 >
-                  "Flesh…Petals…Thorns. Inspired by my private rose garden, Rose
-                  Prick is a wild bouquet of beautiful breeds, a trilogy of rose
-                  de mai, Turkish, and Bulgarian rose. Sharp and pristine, the
-                  piercing prickles of the stems hook onto each other, bonding
-                  their blooms in pink perfection."
+                  "Tick...Tick...Tick... Inspired by my passion for fragrance, CognoScente is not a usual fragrance store. Besides bringing you our favorite perfumes in a variety of scents, we also want to create a community to connect with every cognoscenti and allow everyone to share their passions."
                 </p>
                 <footer className="blockquote-footer fst-italic my-4">H, Founder of .Cognoscente</footer>
               </blockquote>

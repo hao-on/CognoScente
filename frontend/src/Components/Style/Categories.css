@@ -16,24 +16,29 @@
     height: 100vw;
 	width: 100vw;
 }
-  
+
+.categoryGrid .container .men-container {
+    overflow: hidden;
+    position: relative;
+}
+
 .categoryGrid .container .column {
     overflow: hidden;
     position: relative;
 }
   
-.categoryGrid .container .column:nth-of-type(1) {
+.categoryGrid .container .men-container {
       width: 50%;
       height: 100vw;
       border-right: 8px solid white;
   }
   
-.categoryGrid .container .column:nth-of-type(1):hover {
+.categoryGrid .container .men-container:hover {
       opacity: 0.75;
       cursor: pointer;
   }
   
-.categoryGrid .container .column:nth-of-type(1):before {
+.categoryGrid .container .men-container:before {
       position: absolute;
       background-repeat: no-repeat;
       background-size: cover;
@@ -47,29 +52,33 @@
   }
   
 
-  .categoryGrid .container .column:nth-of-type(2) {
+.categoryGrid .container .column {
 	display: flex;
 	flex-direction: column-reverse;
 	width: 100%;
 	height: 120vw;
 }
 
-.categoryGrid .container .column:nth-of-type(2) .row {
+.categoryGrid .container .column .unisex-container {
 	border-top: 8px solid #fff;
 }
   
-.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(1) {
+.categoryGrid .container .column .row {
+	border-top: 8px solid #fff;
+}
+  
+.categoryGrid .container .column .unisex-container {
       position: relative;
       overflow: hidden;
       height: 90vw;
   }
   
-.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(1):hover {
+.categoryGrid .container .column .unisex-container:hover {
       opacity: 0.75;
       cursor: pointer;
   }
   
-.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(1):before {
+.categoryGrid .container .column .unisex-container:before {
       position: absolute;
       background-repeat: no-repeat;
       background-size: 25%;
@@ -82,13 +91,13 @@
       background-image: url(https://res.cloudinary.com/dajhxqlxa/image/upload/v1691607193/1200px-White_circle_on_black_background.svg_odyo4j.png);
   }
   
-  .categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) {
+  .categoryGrid .container .column .row {
 	display: flex;
 	height: 80vw;
 }
 
 
-.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) {
+.categoryGrid .container .column .row div:nth-of-type(1) {
     display: flex;
     position: relative;
 	overflow: hidden;
@@ -96,7 +105,7 @@
 	background-color: white;
 }
 
-.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) .text {
+.categoryGrid .container .column .row div:nth-of-type(1) .text {
 	width: 100%;
 	height: 100%;
 	overflow: visible;
@@ -104,7 +113,7 @@
 	position: relative;
 }
 
-.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) h6 {
+.categoryGrid .container .column .row div:nth-of-type(1) h6 {
     transform: rotateZ(-90deg);
     align-self: center;
     margin-left: 65px;
@@ -114,7 +123,7 @@
     font-weight: bold;
 }
 
-.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) .text p {
+.categoryGrid .container .column .row div:nth-of-type(1) .text p {
 	text-align: right;
 	position: absolute;
 	color: red;
@@ -124,19 +133,19 @@
 	left: -3.5vw;
 }
 
-.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(2) {
+.categoryGrid .container .column .row .women-container {
 	position: relative;
 	width: 70%;
 	border-left: 8px solid white;
 	overflow: hidden;
 }
 
-.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(2):hover {
+.categoryGrid .container .column .row .women-container:hover {
 	opacity: 0.75;
 	cursor: pointer;
 }
 
-.categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(2):before {
+.categoryGrid .container .column .row .women-container:before {
 	position: absolute;
 	top: 0;
 	left: 0vw;
@@ -155,12 +164,12 @@
         height: 50vw;
     }
 
-    .categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(1):before {
+    .categoryGrid .container .column .row:nth-of-type(1):before {
         top: -24vw;
         left: 1vw;   
     }
 
-    .categoryGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) h6 {
+    .categoryGrid .container .column .row div:nth-of-type(1) h6 {
         margin-left: 5px;
         margin-top: 35vw;
         font-size: 12pt;
